@@ -1,4 +1,13 @@
-# Sociability Test: How sociable are you?
-Take the online test to measure your sociability levels. In other words, it tells you how friendly, cooperative and sensitive you are. 
-You should answer all questions for results to be reliable. 
-[Link](http://www.syntone-spb.ru/library/article_syntone/content/4969.html)
+# Ваш уровень общительности
+Пройдите онлайн-тест, в консольном приложении, чтобы измерить уровень вашей общительности. Другими словами, это говорит вам, насколько вы дружелюбны и коммуникабельны.
+
+## Описание
+Тест поможет определить ваш уровень коммуникабельности. Для этого вы должны ответить правдиво на все вопросы. Для реализации был использован тест состоящий из 16 вопросов с 3 вариантами ответов (да, нет, иногда). Материал для теста взят по [ссылке](http://www.syntone-spb.ru/library/article_syntone/content/4969.html)
+
+## Требования и запуск приложения
+* Для начала работы требуется установка [Ruby](https://www.ruby-lang.org/en/).
+* Запуск приложения осуществляется командой `ruby main.rb`
+* В начале теста вы можете представиться или остаться "Таинственной персоной".
+* Для ответов на вопросы введите число: 1 — да, 2 — нет, 3 — иногда.
+
+

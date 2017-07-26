@@ -1,47 +1,44 @@
-require_relative 'test'
-require_relative 'result'
+# Подключаем классы
+require_relative 'lib/test'
+require_relative 'lib/result'
+require_relative 'lib/user'
 
-version = "Ваш уровень общительности. Версия 0.2"
+# Записываем в константу версию программы
+VERSION = "Ваш уровень общительности. Версия 0.3\n\n"
 
-# Предлагаем пройти тест.
-puts "Добрый день! \n" \
-  "Предлагаем пройти тест на возможность определить уровень коммуникабельности человека.\n" \
-  "Для начала прохождения теста введите Ваше имя."
-puts
-
-# Если пользователь не передал имя, называем его
-# Таинственная Персона.
-name = STDIN.gets.encode("UTF-8").chomp
-
-if name == nil || name == ""
-  name = "Таинственная Персона"
-end
-
-# Создаем объекты для Теста и Вывода результата
+# Создаем объекты для Теста, Пользователя и Вывода результата
 test = Test.new
+user = User.new
 print_result = Result.new
 
+# Выводим версию
+puts VERSION
+# Предлагаем пройти тест и представиться пользователю.
+user.get_user_name
+# Объявляем путь к файлу с вопросами.
+# Открываем файл с вопросами теста
+questions_file_pasth = "#{File.dirname(__FILE__)}/data/questions.txt"
+questions_file = File.new(questions_file_pasth, "r:UTF-8")
+
 # Основной цикл программы.
-for question in test.questions do
-  # Перед каждым выводом очищаем экран методом cls
+for question in test.read_questions(questions_file) do
+  # Перед каждым выводом вопроса очищаем экран методом cls
   test.cls
   # Выводим на экран текущий вопрос на экран
   puts question
-  # Объявляем переменную, куда будем сохранять ответ пользователя
-  user_input = nil
-  # Цикл, повторяющий просьбу ввести ответ до тех пор, пока не будет введен
-  # один из предлагаемых вариантов
-  until user_input == 1 || user_input == 2 || user_input == 3
-    puts "Для ответов введите число: 1 — да, 2 — нет, 3 — иногда"
   # Записываем ответ пользователя
-    user_input = STDIN.gets.to_i
-  end
+  user_inpute = user.user_answer
   # Записываем общий балл
-  test.get_answer(user_input)
+  test.get_answer(user_inpute)
 end
 
-# Выводим общее колличество баллов и результат
-puts "#{name}\nКоличество баллов Вашего теста - #{test.answers}"
+# Объявляем путь к файлу с результатами.
+# Открываем файл с результатами теста
+answers_file_pasth = "#{File.dirname(__FILE__)}/data/answers.txt"
+answers_file = File.new(answers_file_pasth, "r:UTF-8")
+print_result.read_answers(answers_file)
+# Выводим общее колличество баллов и результат теста
+puts "#{user.name}\nКоличество баллов Вашего теста - #{test.answers}"
 puts
 print_result.get_result(test)
 

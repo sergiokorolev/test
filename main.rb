@@ -38,7 +38,7 @@ answers_file_pasth = "#{File.dirname(__FILE__)}/data/answers.txt"
 answers_file = File.new(answers_file_pasth, "r:UTF-8")
 print_result.read_answers(answers_file)
 # Выводим общее колличество баллов и результат теста
-puts "#{user.name}\nКоличество баллов Вашего теста - #{test.answers}"
+puts "#{user.name}\nКоличество баллов Вашего теста - #{test.score}"
 puts
 print_result.get_result(test)
 

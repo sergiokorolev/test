@@ -8,7 +8,7 @@ class Result
 
   # Выводим результат, в зависимости от полученных баллов
   def get_result(test)
-    case test.answers
+    case test.score
       when 30..32 then puts @results[0]
       when 25..29 then puts @results[1]
       when 19..24 then puts @results[2]
